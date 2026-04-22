@@ -3,6 +3,12 @@ import api from "../api/axios";
 import Card from "../components/ui/Card";
 import LoadingSpinner from "../components/LoadingSpinner";
 
+const statusChipClass = (status) => {
+  if (status === "Accepted") return "bg-emerald-500/10 text-emerald-400 border-emerald-500/30";
+  if (status === "Wrong Answer") return "bg-amber-500/10 text-amber-400 border-amber-500/30";
+  return "bg-red-500/10 text-red-400 border-red-500/30";
+};
+
 const DashboardPage = () => {
   const [dashboard, setDashboard] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -56,8 +62,14 @@ const DashboardPage = () => {
               {dashboard.submissionHistory.map((submission) => (
                 <li key={submission._id} className="rounded bg-black-900 p-2 text-sm">
                   <p>{submission.problem?.title || "Unknown problem"}</p>
-                  <p className="text-gray-300">
-                    {submission.language} - <span className="text-gold">{submission.status}</span>
+                  <p className="mt-1 flex flex-wrap items-center gap-2 text-gray-300">
+                    <span>{submission.language}</span>
+                    <span
+                      className={`rounded border px-2 py-0.5 text-xs font-medium ${statusChipClass(submission.status)}`}
+                    >
+                      {submission.status}
+                    </span>
+                    <span>Runtime: {Number(submission.runtimeMs || 0)} ms</span>
                   </p>
                 </li>
               ))}
