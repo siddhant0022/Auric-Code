@@ -21,6 +21,9 @@ const Navbar = () => {
           <Link to="/" className="transition hover:text-gold">
             Platform
           </Link>
+          <Link to="/questions" className="transition hover:text-gold">
+            Questions
+          </Link>
           {user && (
             <Link to="/dashboard" className="transition hover:text-gold">
               Dashboard

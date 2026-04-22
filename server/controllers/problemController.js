@@ -3,7 +3,7 @@ const Problem = require("../models/Problem");
 const getProblems = async (req, res) => {
   try {
     const problems = await Problem.find({})
-      .select("title difficulty createdAt")
+      .select("title topic difficulty createdAt")
       .sort({ createdAt: -1 });
     return res.json(problems);
   } catch (error) {

@@ -2,109 +2,272 @@ const Problem = require("../models/Problem");
 
 const starterProblems = [
   {
-    title: "Two Sum",
+    title: "Find Maximum Element",
+    topic: "Arrays",
     difficulty: "Easy",
-    description:
-      "Given an integer array nums and an integer target, return indices of the two numbers such that they add up to target.\nInput format: line 1 has space-separated nums, line 2 has target. The judge also accepts optional n as first line.",
-    constraints: ["2 <= nums.length <= 10^4", "-10^9 <= nums[i] <= 10^9", "Output indices as: i j"],
-    examples: [
-      {
-        input: "nums = [2,7,11,15], target = 9",
-        output: "[0,1]",
-        explanation: "nums[0] + nums[1] == 9"
-      }
-    ],
+    description: "Given an array of integers, return the maximum element.\nInput: space-separated integers.\nOutput: single integer.",
+    constraints: ["1 <= n <= 10^5", "-10^9 <= arr[i] <= 10^9"],
+    examples: [{ input: "1 3 2 9 5", output: "9" }],
     starterCode: {
-      python: "def two_sum(nums, target):\n    # write your code here\n    pass",
-      javascript: "function twoSum(nums, target) {\n  // write your code here\n}",
-      cpp: "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n  // write your code here\n  return 0;\n}",
-      java: "public class Main {\n  public static void main(String[] args) {\n    // write your code here\n  }\n}"
+      python: "def find_max(arr):\n    pass",
+      javascript: "function findMax(arr) {\n}",
+      cpp: "#include <bits/stdc++.h>\nusing namespace std;\nint main() {}",
+      java: "public class Main { public static void main(String[] args) {} }"
     },
     testCases: [
-      { input: "2 7 11 15\n9", output: "0 1" },
-      { input: "3 2 4\n6", output: "1 2" },
-      { input: "0 4 3 0\n0", output: "0 3" }
+      { input: "1 3 2 9 5", output: "9" },
+      { input: "-1 -5 -3", output: "-1" }
     ]
   },
+
   {
-    title: "Valid Parentheses",
+    title: "Second Largest Element",
+    topic: "Arrays",
     difficulty: "Easy",
-    description:
-      "Given a string s containing just the characters (), {}, and [], determine if the input string is valid.\nInput format: single line string s. Output true or false (lowercase preferred).",
-    constraints: ["1 <= s.length <= 10^4", "s consists only of parentheses characters", "Whitespace-only differences are ignored"],
-    examples: [
-      {
-        input: "()[]{}",
-        output: "true",
-        explanation: "All brackets are closed in the correct order."
-      }
-    ],
+    description: "Find the second largest element in the array. If it doesn't exist, return -1.",
+    constraints: ["1 <= n <= 10^5"],
+    examples: [{ input: "1 2 3 4", output: "3" }],
     starterCode: {
-      python: "def is_valid(s):\n    # write your code here\n    pass",
-      javascript: "function isValid(s) {\n  // write your code here\n}",
-      cpp: "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n  // write your code here\n  return 0;\n}",
-      java: "public class Main {\n  public static void main(String[] args) {\n    // write your code here\n  }\n}"
+      python: "def second_largest(arr):\n    pass",
+      javascript: "function secondLargest(arr) {\n}",
+      cpp: "#include <bits/stdc++.h>\nusing namespace std;\nint main() {}",
+      java: "public class Main { public static void main(String[] args) {} }"
     },
     testCases: [
-      { input: "()[]{}", output: "true" },
-      { input: "(]", output: "false" },
-      { input: "([{}])", output: "true" }
+      { input: "1 2 3 4", output: "3" },
+      { input: "5", output: "-1" }
     ]
   },
+
   {
-    title: "Maximum Subarray",
+    title: "Check Sorted Array",
+    topic: "Arrays",
+    difficulty: "Easy",
+    description: "Check if the array is sorted in non-decreasing order.",
+    constraints: ["1 <= n <= 10^5"],
+    examples: [{ input: "1 2 3 4", output: "true" }],
+    starterCode: {
+      python: "def is_sorted(arr):\n    pass",
+      javascript: "function isSorted(arr) {\n}",
+      cpp: "#include <bits/stdc++.h>\nusing namespace std;\nint main() {}",
+      java: "public class Main { public static void main(String[] args) {} }"
+    },
+    testCases: [
+      { input: "1 2 3 4", output: "true" },
+      { input: "1 3 2", output: "false" }
+    ]
+  },
+
+  {
+    title: "Move Zeroes",
+    topic: "Arrays",
+    difficulty: "Easy",
+    description: "Move all zeroes to the end while maintaining order of non-zero elements.",
+    constraints: ["1 <= n <= 10^5"],
+    examples: [{ input: "0 1 0 3 12", output: "1 3 12 0 0" }],
+    starterCode: {
+      python: "def move_zeroes(arr):\n    pass",
+      javascript: "function moveZeroes(arr) {\n}",
+      cpp: "#include <bits/stdc++.h>\nusing namespace std;\nint main() {}",
+      java: "public class Main { public static void main(String[] args) {} }"
+    },
+    testCases: [
+      { input: "0 1 0 3 12", output: "1 3 12 0 0" }
+    ]
+  },
+
+  {
+    title: "Reverse Words in String",
+    topic: "Strings",
     difficulty: "Medium",
-    description:
-      "Given an integer array nums, find the contiguous subarray with the largest sum and return its sum.\nInput format: one line with space-separated integers. Output a single integer.",
-    constraints: ["1 <= nums.length <= 10^5", "-10^4 <= nums[i] <= 10^4", "Negative-only arrays are valid"],
-    examples: [
-      {
-        input: "-2 1 -3 4 -1 2 1 -5 4",
-        output: "6",
-        explanation: "The subarray [4, -1, 2, 1] has the largest sum = 6."
-      }
-    ],
+    description: "Reverse the order of words in a string.",
+    constraints: ["1 <= n <= 10^5"],
+    examples: [{ input: "hello world", output: "world hello" }],
     starterCode: {
-      python: "def max_subarray(nums):\n    # write your code here\n    pass",
-      javascript: "function maxSubArray(nums) {\n  // write your code here\n}",
-      cpp: "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n  // write your code here\n  return 0;\n}",
-      java: "public class Main {\n  public static void main(String[] args) {\n    // write your code here\n  }\n}"
+      python: "def reverse_words(s):\n    pass",
+      javascript: "function reverseWords(s) {\n}",
+      cpp: "#include <bits/stdc++.h>\nusing namespace std;\nint main() {}",
+      java: "public class Main { public static void main(String[] args) {} }"
     },
     testCases: [
-      { input: "-2 1 -3 4 -1 2 1 -5 4", output: "6" },
-      { input: "1", output: "1" },
-      { input: "-8 -3 -6 -2 -5 -4", output: "-2" }
+      { input: "hello world", output: "world hello" }
     ]
   },
+
   {
-    title: "Merge Strings Alternately",
-    difficulty: "Easy",
-    description:
-      "You are given two strings word1 and word2. Merge them by adding letters in alternating order.\nInput format: word1 on line 1, word2 on line 2. Output merged string.",
-    constraints: ["1 <= word1.length, word2.length <= 100", "Only lowercase English letters"],
-    examples: [
-      {
-        input: "abc\npqr",
-        output: "apbqcr",
-        explanation: "Take one character from each string alternately."
-      }
-    ],
+    title: "Longest Palindromic Substring",
+    topic: "Strings",
+    difficulty: "Medium",
+    description: "Find the longest palindromic substring.",
+    constraints: ["1 <= n <= 1000"],
+    examples: [{ input: "babad", output: "bab" }],
     starterCode: {
-      python: "def merge_alternately(word1, word2):\n    # write your code here\n    pass",
-      javascript: "function mergeAlternately(word1, word2) {\n  // write your code here\n}",
-      cpp: "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n  // write your code here\n  return 0;\n}",
-      java: "public class Main {\n  public static void main(String[] args) {\n    // write your code here\n  }\n}"
+      python: "def longest_palindrome(s):\n    pass",
+      javascript: "function longestPalindrome(s) {\n}",
+      cpp: "#include <bits/stdc++.h>\nusing namespace std;\nint main() {}",
+      java: "public class Main { public static void main(String[] args) {} }"
     },
     testCases: [
-      { input: "abc\npqr", output: "apbqcr" },
-      { input: "ab\npqrs", output: "apbqrs" },
-      { input: "a\nz", output: "az" }
+      { input: "babad", output: "bab" },
+      { input: "cbbd", output: "bb" }
     ]
+  },
+
+  {
+    title: "Valid Sudoku",
+    topic: "Hashing",
+    difficulty: "Medium",
+    description: "Determine if a 9x9 Sudoku board is valid.",
+    constraints: ["Board is 9x9"],
+    examples: [{ input: "valid board", output: "true" }],
+    starterCode: {
+      python: "def is_valid_sudoku(board):\n    pass",
+      javascript: "function isValidSudoku(board) {\n}",
+      cpp: "#include <bits/stdc++.h>\nusing namespace std;\nint main() {}",
+      java: "public class Main { public static void main(String[] args) {} }"
+    },
+    testCases: [
+      { input: "valid", output: "true" }
+    ]
+  },
+
+  {
+    title: "Sliding Window Maximum",
+    topic: "Sliding Window",
+    difficulty: "Hard",
+    description: "Find maximum in each window of size k.",
+    constraints: ["1 <= n <= 10^5"],
+    examples: [{ input: "1 3 -1 -3 5 3 6 7\n3", output: "3 3 5 5 6 7" }],
+    starterCode: {
+      python: "def max_sliding_window(nums, k):\n    pass",
+      javascript: "function maxSlidingWindow(nums, k) {\n}",
+      cpp: "#include <bits/stdc++.h>\nusing namespace std;\nint main() {}",
+      java: "public class Main { public static void main(String[] args) {} }"
+    },
+    testCases: [
+      { input: "1 3 -1 -3 5 3 6 7\n3", output: "3 3 5 5 6 7" }
+    ]
+  },
+
+  {
+    title: "Detect Cycle in Linked List",
+    topic: "Linked List",
+    difficulty: "Easy",
+    description: "Check if linked list has a cycle.",
+    constraints: ["n <= 10^5"],
+    examples: [{ input: "cycle list", output: "true" }],
+    starterCode: {
+      python: "def has_cycle(head):\n    pass",
+      javascript: "function hasCycle(head) {\n}",
+      cpp: "#include <bits/stdc++.h>\nusing namespace std;\nint main() {}",
+      java: "public class Main { public static void main(String[] args) {} }"
+    },
+    testCases: [{ input: "cycle", output: "true" }]
+  },
+
+  {
+    title: "Binary Tree Inorder Traversal",
+    topic: "Trees",
+    difficulty: "Easy",
+    description: "Return inorder traversal of binary tree.",
+    constraints: ["n <= 10^5"],
+    examples: [{ input: "tree", output: "1 2 3" }],
+    starterCode: {
+      python: "def inorder(root):\n    pass",
+      javascript: "function inorder(root) {\n}",
+      cpp: "#include <bits/stdc++.h>\nusing namespace std;\nint main() {}",
+      java: "public class Main { public static void main(String[] args) {} }"
+    },
+    testCases: [{ input: "tree", output: "1 2 3" }]
+  },
+
+  {
+    title: "Coin Change",
+    topic: "Dynamic Programming",
+    difficulty: "Medium",
+    description: "Find minimum coins needed to make amount.",
+    constraints: ["1 <= amount <= 10^4"],
+    examples: [{ input: "1 2 5\n11", output: "3" }],
+    starterCode: {
+      python: "def coin_change(coins, amount):\n    pass",
+      javascript: "function coinChange(coins, amount) {\n}",
+      cpp: "#include <bits/stdc++.h>\nusing namespace std;\nint main() {}",
+      java: "public class Main { public static void main(String[] args) {} }"
+    },
+    testCases: [{ input: "1 2 5\n11", output: "3" }]
+  },
+
+  {
+    title: "House Robber",
+    topic: "Dynamic Programming",
+    difficulty: "Medium",
+    description: "Max money without robbing adjacent houses.",
+    constraints: ["1 <= n <= 10^5"],
+    examples: [{ input: "2 7 9 3 1", output: "12" }],
+    starterCode: {
+      python: "def rob(nums):\n    pass",
+      javascript: "function rob(nums) {\n}",
+      cpp: "#include <bits/stdc++.h>\nusing namespace std;\nint main() {}",
+      java: "public class Main { public static void main(String[] args) {} }"
+    },
+    testCases: [{ input: "2 7 9 3 1", output: "12" }]
+  },
+
+  {
+    title: "Number of Islands",
+    topic: "Graphs",
+    difficulty: "Medium",
+    description: "Count number of islands in grid.",
+    constraints: ["1 <= m,n <= 300"],
+    examples: [{ input: "grid", output: "3" }],
+    starterCode: {
+      python: "def num_islands(grid):\n    pass",
+      javascript: "function numIslands(grid) {\n}",
+      cpp: "#include <bits/stdc++.h>\nusing namespace std;\nint main() {}",
+      java: "public class Main { public static void main(String[] args) {} }"
+    },
+    testCases: [{ input: "grid", output: "3" }]
+  },
+
+  {
+    title: "Top K Frequent Elements",
+    topic: "Heap",
+    difficulty: "Medium",
+    description: "Return k most frequent elements.",
+    constraints: ["1 <= n <= 10^5"],
+    examples: [{ input: "1 1 1 2 2 3\n2", output: "1 2" }],
+    starterCode: {
+      python: "def top_k(nums, k):\n    pass",
+      javascript: "function topK(nums, k) {\n}",
+      cpp: "#include <bits/stdc++.h>\nusing namespace std;\nint main() {}",
+      java: "public class Main { public static void main(String[] args) {} }"
+    },
+    testCases: [{ input: "1 1 1 2 2 3\n2", output: "1 2" }]
+  },
+
+  {
+    title: "LRU Cache",
+    topic: "Design",
+    difficulty: "Hard",
+    description: "Design LRU cache with O(1) operations.",
+    constraints: ["capacity <= 3000"],
+    examples: [{ input: "LRU ops", output: "result" }],
+    starterCode: {
+      python: "class LRUCache:\n    def __init__(self, capacity):\n        pass",
+      javascript: "class LRUCache {\n constructor(capacity) {}\n}",
+      cpp: "#include <bits/stdc++.h>\nusing namespace std;\nint main() {}",
+      java: "class LRUCache {}"
+    },
+    testCases: [{ input: "ops", output: "result" }]
   }
 ];
 
 const ensureSeedProblems = async () => {
   for (const problem of starterProblems) {
+    await Problem.updateOne(
+      { title: problem.title, $or: [{ topic: { $exists: false } }, { topic: null }, { topic: "" }] },
+      { $set: { topic: problem.topic } }
+    );
     await Problem.updateOne({ title: problem.title }, { $setOnInsert: problem }, { upsert: true });
   }
   console.log("Ensured starter problems are seeded");

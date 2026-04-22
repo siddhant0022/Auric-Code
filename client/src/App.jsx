@@ -6,6 +6,7 @@ import ProblemDetailPage from "./pages/ProblemDetailPage";
 import LoginPage from "./pages/LoginPage";
 import SignupPage from "./pages/SignupPage";
 import DashboardPage from "./pages/DashboardPage";
+import QuestionsPage from "./pages/QuestionsPage";
 
 const App = () => (
   <BrowserRouter>
@@ -13,6 +14,7 @@ const App = () => (
       <Navbar />
       <Routes>
         <Route path="/" element={<ProblemListPage />} />
+        <Route path="/questions" element={<QuestionsPage />} />
         <Route
           path="/problems/:id"
           element={
