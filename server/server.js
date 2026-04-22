@@ -13,9 +13,28 @@ const ensureSeedProblems = require("./utils/seedProblems");
 const app = express();
 const PORT = process.env.PORT || 5000;
 
+const normalizeOrigin = (value = "") => value.trim().replace(/\/+$/, "");
+
+const rawClientUrl = process.env.CLIENT_URL || "*";
+const allowedOrigins =
+  rawClientUrl === "*"
+    ? ["*"]
+    : rawClientUrl
+        .split(",")
+        .map((origin) => normalizeOrigin(origin))
+        .filter(Boolean);
+
 app.use(
   cors({
-    origin: process.env.CLIENT_URL || "*"
+    origin: (origin, callback) => {
+      if (!origin || allowedOrigins.includes("*")) {
+        return callback(null, true);
+      }
+
+      const normalizedRequestOrigin = normalizeOrigin(origin);
+      const isAllowed = allowedOrigins.includes(normalizedRequestOrigin);
+      return callback(isAllowed ? null : new Error("Not allowed by CORS"), isAllowed);
+    }
   })
 );
 app.use(express.json());
