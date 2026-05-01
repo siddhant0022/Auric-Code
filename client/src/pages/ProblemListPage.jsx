@@ -57,11 +57,12 @@ const testimonials = [
 
 const ProblemListPage = () => {
   const [problems, setProblems] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
   useEffect(() => {
     const fetchProblems = async () => {
+      setLoading(true);
       try {
         const response = await api.get("/problems");
         setProblems(response.data);
@@ -74,9 +75,6 @@ const ProblemListPage = () => {
 
     fetchProblems();
   }, []);
-
-  if (loading) return <LoadingSpinner label="Loading problems..." />;
-  if (error) return <p className="mx-auto mt-6 max-w-6xl px-4 text-red-400">{error}</p>;
 
   return (
     <main className="relative overflow-hidden pb-16">
@@ -220,20 +218,31 @@ const ProblemListPage = () => {
             Practice with curated problems directly inside the same premium workspace.
           </p>
           <div className="mt-5 space-y-3">
-            {problems.slice(0, 5).map((problem) => (
-              <Card key={problem._id} className="flex items-center justify-between gap-4">
-                <div>
-                  <h3 className="font-medium text-white">{problem.title}</h3>
-                  <p className="text-xs uppercase tracking-wider text-zinc-400">{problem.difficulty}</p>
-                </div>
-                <Link
-                  to={`/problems/${problem._id}`}
-                  className="rounded-full border border-gold/45 px-4 py-1.5 text-xs text-gold transition hover:bg-gold/10"
-                >
-                  Solve
-                </Link>
-              </Card>
-            ))}
+            {loading ? (
+              <div className="rounded-xl border border-gold/20 bg-black-900/70 p-4">
+                <LoadingSpinner label="Loading problems..." />
+              </div>
+            ) : (
+              problems.slice(0, 5).map((problem) => (
+                <Card key={problem._id} className="flex items-center justify-between gap-4">
+                  <div>
+                    <h3 className="font-medium text-white">{problem.title}</h3>
+                    <p className="text-xs uppercase tracking-wider text-zinc-400">{problem.difficulty}</p>
+                  </div>
+                  <Link
+                    to={`/problems/${problem._id}`}
+                    className="rounded-full border border-gold/45 px-4 py-1.5 text-xs text-gold transition hover:bg-gold/10"
+                  >
+                    Solve
+                  </Link>
+                </Card>
+              ))
+            )}
+            {!loading && error ? (
+              <p className="rounded-xl border border-red-500/30 bg-red-500/10 px-3 py-2 text-sm text-red-300">
+                {error}
+              </p>
+            ) : null}
           </div>
         </div>
       </section>
